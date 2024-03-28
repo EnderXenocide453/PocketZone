@@ -9,13 +9,9 @@ namespace Behaviours
         [SerializeField] float m_Damage = 10f;
         [SerializeField] private string[] m_InteractionTags;
         [SerializeField] bool m_DestroyAfterCollision = true;
-        [SerializeField] bool m_DestroyOnNextFrame = false;
 
         public void Execute()
         {
-            if (m_DestroyOnNextFrame)
-                StartCoroutine(DestroyOnNextFrame());
-
             Use();
         }
 
@@ -49,12 +45,6 @@ namespace Behaviours
             }
 
             return false;
-        }
-
-        private IEnumerator DestroyOnNextFrame()
-        {
-            yield return null;
-            Destroy(gameObject);
         }
     }
 }
