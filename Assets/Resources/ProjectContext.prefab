@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputPresenter: {fileID: 4250503863430506444}
-  m_LootFabric: {fileID: 0}
+  m_LootFabric: {fileID: 5364434681014502947}
 --- !u!114 &4250503863430506444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d70b52bf8a72cf43962702ecb314bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRandomCount: 1
+  maxRandomCount: 5
   m_ItemsCollection:
   - {fileID: 11400000, guid: 4027debd040386343be17d7c2c3847fa, type: 2}
   - {fileID: 11400000, guid: 759cb9893a333174da656525929320cd, type: 2}
@@ -110,4 +112,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4427b98c981c3c438f59c5c88c35c6b, type: 2}
   - {fileID: 11400000, guid: c6c663672e918ab44a3e044a6c908bd2, type: 2}
   - {fileID: 11400000, guid: 9d1b044c500e3284db0d00ac5b1d5df2, type: 2}
-  m_LootObjectPrefab: {fileID: 0}
+  m_LootObjectPrefab: {fileID: 6186693057217221805, guid: 9abbe0547b8d4114c8521b63cb362dd1, type: 3}

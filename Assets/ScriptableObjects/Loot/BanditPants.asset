@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0877a9797354953498f9437a40ecebf7, type: 3}
   m_Name: BanditPants
   m_EditorClassIdentifier: 
-  m_ItemName: 
+  m_ItemName: "\u0411\u0430\u043D\u0434\u0438\u0442\u0441\u043A\u0438\u0435 \u0448\u0442\u0430\u043D\u044B"
   m_Sprite: {fileID: 21300000, guid: 25c2a3f0b6bbd5e438f53bf9aa8b4c74, type: 3}
+  m_Index: 2

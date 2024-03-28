@@ -6,6 +6,7 @@ namespace Loot
 {
     public class LootFabric : MonoBehaviour
     {
+        [SerializeField] private int minRandomCount = 1, maxRandomCount = 5;
         [SerializeField] private Item[] m_ItemsCollection;
         [SerializeField] private GameObject m_LootObjectPrefab;
 
@@ -22,12 +23,20 @@ namespace Loot
             return new LootInfo(m_ItemsCollection[id]);
         }
 
-        public LootObject InstantiateLootObject(int id, Vector2 position)
+        public LootObject InstantiateLootObject(int id, Vector2 position, int count = 1)
         {
             LootObject loot = Instantiate(m_LootObjectPrefab, position, Quaternion.identity).GetComponent<LootObject>();
-            loot.SetItem(GetItem(id));
+            loot.SetItem(GetItem(id), count);
 
             return loot;
+        }
+
+        public LootObject InstantiateRandomLootObject(Vector2 position)
+        {
+            int id = Random.Range(0, m_ItemsCollection.Length);
+            int count = Random.Range(minRandomCount, maxRandomCount);
+
+            return InstantiateLootObject(id, position, count);
         }
     }
 

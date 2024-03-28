@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class LootCollector : MonoBehaviour
+namespace Loot
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LootCollector : MonoBehaviour
     {
-        
-    }
+        private Inventory m_Inventory;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Inject]
+        public void Constructor(Inventory inventory)
+        {
+            m_Inventory = inventory;
+        }
+
+        public void AddLoot(int id, int count)
+        {
+            m_Inventory.AddLoot(id, count);
+        }
     }
 }
+
