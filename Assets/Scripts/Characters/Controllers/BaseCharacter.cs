@@ -9,6 +9,7 @@ namespace Behaviours
         [SerializeField] private Health m_Health;
         [SerializeField] private TargetDetector m_TargetDetector;
         [SerializeField] private MovementBehaviour m_MovementBehaviour;
+        [SerializeField] private BaseAttackBehaviour m_BaseAttackBehaviour;
 
         private void Awake()
         {
@@ -21,12 +22,19 @@ namespace Behaviours
         protected void OnTargetChanged(Transform target)
         {
             m_MovementBehaviour.SetTarget(target);
+            m_BaseAttackBehaviour.SetTarget(target);
         }
 
         protected void OnDeath()
         {
-            m_MovementBehaviour.enabled = false;
-            m_TargetDetector.enabled = false;
+            //m_MovementBehaviour.enabled = false;
+            //m_TargetDetector.enabled = false;
+            //m_BaseAttackBehaviour.enabled = false;
+
+            //foreach (var collider in GetComponents<Collider>())
+            //    collider.enabled = false;
+
+            Destroy(gameObject);
         }
     }
 }

@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.data[0]
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4348608807715764277, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.size
       value: 1
@@ -72,6 +80,10 @@ PrefabInstance:
       propertyPath: m_MovementBehaviour
       value: 
       objectReference: {fileID: 8610432421627185332}
+    - target: {fileID: 8024882703798146712, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_BaseAttackBehaviour
+      value: 
+      objectReference: {fileID: 3038581606059494531}
     - target: {fileID: 8853414455426373718, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -87,6 +99,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6700543943361979021, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       insertIndex: 4
       addedObject: {fileID: 8610432421627185332}
+    - targetCorrespondingSourceObject: {fileID: 6700543943361979021, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3038581606059494531}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
 --- !u!1 &3741719419160598250 stripped
 GameObject:
@@ -107,6 +122,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CharacterMovement: {fileID: 8375001702330913145}
   m_StopDistance: 1
+--- !u!114 &3038581606059494531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741719419160598250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e7a901124cdd647b8c66cdafd8e357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CharacterAttack: {fileID: 7847393018126053950}
+  m_AttackDistance: 1.5
+--- !u!114 &7847393018126053950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 285933036792137305, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+  m_PrefabInstance: {fileID: 8002998567298135143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741719419160598250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9acb541a0e22014ea42be4e1ca03c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8375001702330913145 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1957279575528056094, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}

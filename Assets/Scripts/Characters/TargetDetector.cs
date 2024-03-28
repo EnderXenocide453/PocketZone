@@ -93,6 +93,11 @@ namespace Behaviours
                 yield return new WaitForSeconds(m_NearTargetCheckDelay);
             }
         }
+
+        private void OnDisable()
+        {
+            CurrentTarget = null;
+        }
     }
 }
 
