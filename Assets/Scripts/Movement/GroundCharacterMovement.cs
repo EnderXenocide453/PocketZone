@@ -14,7 +14,7 @@ namespace Movement
 
         public override void MoveByDirection(Vector2 direction)
         {
-            m_Body.AddForce(direction * Speed);
+            m_Body.MovePosition(m_Body.position + direction * Speed);
         }
     }
 }
