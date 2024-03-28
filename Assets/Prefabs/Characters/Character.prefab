@@ -142,7 +142,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Health: {fileID: 4380079971569690590}
   m_TargetDetector: {fileID: 45504220170863619}
   m_MovementBehaviour: {fileID: 0}
-  m_CharacterAttack: {fileID: 285933036792137305}
+  m_BaseAttackBehaviour: {fileID: 0}
 --- !u!114 &285933036792137305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,9 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9acb541a0e22014ea42be4e1ca03c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AttackRange: 2
   m_DamageDealer: {fileID: 1712732298096081376}
-  m_AutoAttack: 1
 --- !u!114 &1712732298096081376
 MonoBehaviour:
   m_ObjectHideFlags: 0

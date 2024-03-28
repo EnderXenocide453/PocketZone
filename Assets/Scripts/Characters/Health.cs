@@ -26,6 +26,9 @@ namespace CharacterStats
 
         private void SetHP(float health)
         {
+            if (m_CurrentHealth <= 0)
+                return;
+
             if (health <= 0) {
                 health = 0;
                 Death();

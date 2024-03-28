@@ -11,7 +11,6 @@ namespace Movement
         {
             get
             {
-                Debug.Log(Vector2.Distance(CurrentTarget.position, transform.position));
                 if (CurrentTarget == null || Vector2.Distance(CurrentTarget.position, transform.position) <= m_StopDistance)
                     return Vector2.zero;
 
