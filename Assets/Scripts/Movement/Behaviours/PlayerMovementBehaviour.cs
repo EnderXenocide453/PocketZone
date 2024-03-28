@@ -4,9 +4,8 @@ using Zenject;
 
 namespace Movement
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovementBehaviour : MovementBehaviour
     {
-        [SerializeField] private CharacterMovement m_CharacterMovement;
         private InputPresenter m_InputPresenter;
 
         [Inject]
@@ -14,19 +13,14 @@ namespace Movement
         {
             m_InputPresenter = inputPresenter;
 
-            if (m_CharacterMovement != null) {
+            if (CharacterMovement != null) {
                 m_InputPresenter.onMove += Move;
             }
         }
 
-        public void SetMovement(CharacterMovement characterMovement)
+        protected override void Move(Vector2 direction)
         {
-            m_CharacterMovement = characterMovement;
-        }
-
-        private void Move(Vector2 direction)
-        {
-            m_CharacterMovement?.MoveByDirection(direction);
+            CharacterMovement?.MoveByDirection(direction);
         }
 
         private void OnDestroy()
