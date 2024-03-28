@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CharacterMovement: {fileID: 8375001702330913145}
+  m_StopDistance: 1
 --- !u!114 &8375001702330913145 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1957279575528056094, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}

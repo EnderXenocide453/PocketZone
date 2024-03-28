@@ -4,12 +4,20 @@ namespace Movement
 {
     public class EnemyMovementBehaviour : MovementBehaviour
     {
+        [SerializeField] float m_StopDistance = 0.5f;
         private bool m_IsMove;
 
-        private Vector2 m_Direction => 
-            CurrentTarget == null ? 
-            Vector2.zero : 
-            Vector2.ClampMagnitude(CurrentTarget.position - transform.position, 1);
+        private Vector2 m_Direction
+        {
+            get
+            {
+                Debug.Log(Vector2.Distance(CurrentTarget.position, transform.position));
+                if (CurrentTarget == null || Vector2.Distance(CurrentTarget.position, transform.position) <= m_StopDistance)
+                    return Vector2.zero;
+
+                return Vector2.ClampMagnitude(CurrentTarget.position - transform.position, 1);
+            }
+        }
 
         private void FixedUpdate()
         {
