@@ -52,18 +52,30 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4348608807715764277, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348608807715764277, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.data[0]
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5637809486037827162, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_MovementBehaviour
       value: 
       objectReference: {fileID: 2268868207400495398}
     - target: {fileID: 6700543943361979021, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_Name
-      value: Character Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6700543943361979021, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8024882703798146712, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_MovementBehaviour
+      value: 
+      objectReference: {fileID: 2268868207400495398}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

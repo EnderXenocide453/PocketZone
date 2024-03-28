@@ -2,22 +2,31 @@ using CharacterStats;
 using Movement;
 using UnityEngine;
 
-namespace Characters
+namespace Behaviours
 {
     public class BaseCharacter : MonoBehaviour
     {
         [SerializeField] private Health m_Health;
+        [SerializeField] private TargetDetector m_TargetDetector;
         [SerializeField] private MovementBehaviour m_MovementBehaviour;
 
         private void Awake()
         {
             if (m_Health != null)
                 m_Health.onDeath += OnDeath;
+
+            m_TargetDetector.onCurrentTargetChanged += OnTargetChanged;
         }
 
-        private void OnDeath()
+        protected void OnTargetChanged(Transform target)
+        {
+            m_MovementBehaviour.SetTarget(target);
+        }
+
+        protected void OnDeath()
         {
             m_MovementBehaviour.enabled = false;
+            m_TargetDetector.enabled = false;
         }
     }
 }
