@@ -1,5 +1,6 @@
 using CharacterStats;
 using Movement;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Behaviours
@@ -10,6 +11,20 @@ namespace Behaviours
         [SerializeField] private TargetDetector m_TargetDetector;
         [SerializeField] private MovementBehaviour m_MovementBehaviour;
         [SerializeField] private BaseAttackBehaviour m_BaseAttackBehaviour;
+
+        public CharacterSaveInfo CharacterSaveInfo
+        {
+            get => new CharacterSaveInfo
+            {
+                position = transform.position,
+                health = m_Health.CurrentHealth
+            };
+            set
+            {
+                transform.position = value.position;
+                m_Health.CurrentHealth = value.health;
+            }
+        }
 
         private void Awake()
         {
@@ -36,6 +51,12 @@ namespace Behaviours
 
             Destroy(gameObject);
         }
+    }
+
+    public struct CharacterSaveInfo
+    {
+        public float3 position;
+        public float health;
     }
 }
 

@@ -22,6 +22,7 @@ namespace Loot
         public void Construct(Inventory inventory, InputPresenter input)
         {
             m_Inventory = inventory;
+            inventory.onLoaded += Draw;
             inventory.onInventoryChanges += OnInventoryChanges;
             input.OnInventoryAction += ToggleInventory;
 
@@ -53,8 +54,6 @@ namespace Loot
 
         private void OnInventoryChanges(LootInfo loot, InventoryActionType type)
         {
-            if (loot == null) return;
-
             switch (type) {
                 case InventoryActionType.Added:
                     AddItem(loot);

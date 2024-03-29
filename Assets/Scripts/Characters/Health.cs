@@ -14,6 +14,12 @@ namespace CharacterStats
 
         public Action onDeath;
 
+        public float CurrentHealth
+        {
+            get => m_CurrentHealth;
+            set => SetHP(value);
+        }
+
         private void Start()
         {
             m_CurrentHealth = m_MaxHealth;

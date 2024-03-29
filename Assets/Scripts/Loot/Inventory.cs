@@ -12,6 +12,7 @@ namespace Loot
         public LootInfo[] StoredItems => m_StoredItems.Values.ToArray();
 
         public Action<LootInfo, InventoryActionType> onInventoryChanges;
+        public Action onLoaded;
 
         public Inventory(params LootInfo[] loot)
         {
@@ -52,6 +53,7 @@ namespace Loot
             }
 
             storedLoot.SetCount(storedLoot.Count - count);
+            Debug.Log(storedLoot.Count);
 
             if (storedLoot.Count == 0) {
                 m_StoredItems.Remove(storedLoot.ID);
@@ -63,7 +65,15 @@ namespace Loot
             return true;
         }
 
+        public void SetData(LootInfo[] data)
+        {
+            m_StoredItems = new Dictionary<int, LootInfo>();
+            foreach (LootInfo item in data) {
+                AddLoot(item);
+            }
 
+            onLoaded?.Invoke();
+        }
     }
 
     public enum InventoryActionType
