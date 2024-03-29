@@ -1,48 +1,59 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Loot
 {
     public class Inventory
     {
-        private Dictionary<int, int> m_StoredItems;
+        private Dictionary<int, LootInfo> m_StoredItems;
 
-        public Action<int, InventoryActionType> onInventoryChanges;
+        public LootInfo[] StoredItems => m_StoredItems.Values.ToArray();
+
+        public Action<LootInfo, InventoryActionType> onInventoryChanges;
 
         public Inventory()
         {
-            m_StoredItems = new Dictionary<int, int>();
-            onInventoryChanges += (int id, InventoryActionType type) => Debug.Log($"{id}\n{type}");
+            m_StoredItems = new Dictionary<int, LootInfo>();
         }
 
-        public void AddLoot(int lootId, int count = 1)
+        public LootInfo GetLootInfo(int id)
         {
-            if (!m_StoredItems.ContainsKey(lootId)) {
-                m_StoredItems.Add(lootId, count);
-                onInventoryChanges?.Invoke(count, InventoryActionType.Added);
+            if (id < 0 || id >= m_StoredItems.Count) { return null; }
+
+            return m_StoredItems[id];
+        }
+
+        public void AddLoot(LootInfo loot)
+        {
+            if (!m_StoredItems.ContainsKey(loot.ID)) {
+                m_StoredItems.Add(loot.ID, loot);
+                onInventoryChanges?.Invoke(loot, InventoryActionType.Added);
                 return;
             }
 
-            m_StoredItems[lootId] += count;
-            onInventoryChanges?.Invoke(m_StoredItems[lootId], InventoryActionType.Changed);
+            LootInfo storedLoot = m_StoredItems[loot.ID];
+            storedLoot.SetCount(loot.Count + storedLoot.Count);
+            onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Changed);
         }
 
-        public int TakeLoot(int lootId, int count = 1)
+        public int TakeLoot(LootInfo loot)
         {
-            if (!m_StoredItems.ContainsKey(lootId))
+            if (!m_StoredItems.ContainsKey(loot.ID))
                 return 0;
 
-            count = Mathf.Min(count, m_StoredItems[lootId]);
-            m_StoredItems[lootId] -= count;
+            LootInfo storedLoot = m_StoredItems[loot.ID];
+            int count = Mathf.Min(loot.Count, storedLoot.Count);
+            storedLoot.SetCount(storedLoot.Count - count);
 
-            if (m_StoredItems[lootId] == 0) {
-                m_StoredItems.Remove(lootId);
-                onInventoryChanges?.Invoke(0, InventoryActionType.Removed);
+            if (storedLoot.Count == 0) {
+                m_StoredItems.Remove(storedLoot.ID);
+                onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Removed);
                 return count;
             }
 
-            onInventoryChanges?.Invoke(count, InventoryActionType.Changed);
+            onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Changed);
             return count;
         }
     }

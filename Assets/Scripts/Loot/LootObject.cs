@@ -9,21 +9,19 @@ namespace Loot
     {
         [SerializeField] SpriteRenderer m_SpriteRenderer;
         private LootInfo m_Info;
-        private int m_Count;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent<LootCollector>(out var collector)) {
-                collector.AddLoot(m_Info.ID, m_Count);
+                collector.AddLoot(m_Info);
                 Destroy(gameObject);
             }
         }
 
-        public void SetItem(LootInfo lootInfo, int count)
+        public void SetItem(LootInfo lootInfo)
         {
             m_Info = lootInfo;
             m_SpriteRenderer.sprite = lootInfo.Sprite;
-            m_Count = count;
         }
     }
 }

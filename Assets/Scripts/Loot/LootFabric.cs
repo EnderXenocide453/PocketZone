@@ -18,15 +18,15 @@ namespace Loot
             }
         }
 
-        public LootInfo GetItem(int id)
+        public LootInfo GetItem(int id, int count)
         {
-            return new LootInfo(m_ItemsCollection[id]);
+            return new LootInfo(m_ItemsCollection[id], count);
         }
 
         public LootObject InstantiateLootObject(int id, Vector2 position, int count = 1)
         {
             LootObject loot = Instantiate(m_LootObjectPrefab, position, Quaternion.identity).GetComponent<LootObject>();
-            loot.SetItem(GetItem(id), count);
+            loot.SetItem(GetItem(id, count));
 
             return loot;
         }
@@ -40,17 +40,24 @@ namespace Loot
         }
     }
 
-    public struct LootInfo
+    public class LootInfo
     {
         public int ID {  get; private set; }
         public string Name { get; private set; }
         public Sprite Sprite { get; private set; }
+        public int Count { get; private set; }
 
-        public LootInfo(Item item)
+        public LootInfo(Item item, int count)
         {
             ID = item.Index;
             Name = item.GetName();
             Sprite = item.GetSprite();
+            Count = count;
+        }
+
+        public void SetCount(int value)
+        {
+            Count = value;
         }
     }
 }

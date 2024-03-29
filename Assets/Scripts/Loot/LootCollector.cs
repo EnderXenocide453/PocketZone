@@ -13,9 +13,9 @@ namespace Loot
             m_Inventory = inventory;
         }
 
-        public void AddLoot(int id, int count)
+        public void AddLoot(LootInfo loot)
         {
-            m_Inventory.AddLoot(id, count);
+            m_Inventory.AddLoot(loot);
         }
     }
 }
