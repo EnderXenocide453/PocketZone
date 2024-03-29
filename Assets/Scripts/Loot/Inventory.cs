@@ -23,7 +23,7 @@ namespace Loot
 
         public LootInfo GetLootInfo(int id)
         {
-            if (id < 0 || id >= m_StoredItems.Count) { return null; }
+            if (!m_StoredItems.ContainsKey(id)) { return null; }
 
             return m_StoredItems[id];
         }
@@ -47,17 +47,18 @@ namespace Loot
                 return false;
 
             LootInfo storedLoot = m_StoredItems[id];
-
-            if (storedLoot.Count == 0) {
-                m_StoredItems.Remove(storedLoot.ID);
-                onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Removed);
-                return false;
-            } 
             if (storedLoot.Count < count) {
                 return false;
             }
 
             storedLoot.SetCount(storedLoot.Count - count);
+
+            if (storedLoot.Count == 0) {
+                m_StoredItems.Remove(storedLoot.ID);
+                onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Removed);
+                return true;
+            } 
+
             onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Changed);
             return true;
         }

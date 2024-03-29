@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_InteractionTags.Array.data[0]
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4380079971569690590, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_MaxHealth
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5637809486037827162, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_MovementBehaviour
       value: 

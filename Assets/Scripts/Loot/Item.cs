@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Loot
@@ -17,6 +18,32 @@ namespace Loot
             get => m_Index;
             set => m_Index = value;
         }
+
+        public LootInteractionData[] Interactions => new LootInteractionData[]
+        {
+            new LootInteractionData("Бросить", InteractType.Drop)
+        };
+    }
+
+    public struct LootInteractionData
+    {
+        private string m_Title;
+        private InteractType m_Type;
+
+        public string Title => m_Title;
+        public InteractType Type => m_Type;
+
+        public LootInteractionData(string title, InteractType type)
+        {
+            m_Title = title;
+            m_Type = type;
+        }
+    }
+
+    public enum InteractType
+    {
+        Drop,
+        Use
     }
 }
 

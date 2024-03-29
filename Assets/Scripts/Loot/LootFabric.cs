@@ -42,16 +42,18 @@ namespace Loot
 
     public class LootInfo
     {
-        public int ID {  get; private set; }
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public Sprite Sprite { get; private set; }
         public int Count { get; private set; }
+        public LootInteractionData[] Interactions { get; private set; }
 
         public LootInfo(Item item, int count)
         {
             ID = item.Index;
             Name = item.GetName();
             Sprite = item.GetSprite();
+            Interactions = item.Interactions;
             Count = count;
         }
 

@@ -2,6 +2,7 @@ using Input;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,9 @@ namespace Loot
     {
         [SerializeField] private RectTransform m_ItemContainer;
         [SerializeField] private GameObject m_ItemUIPrefab;
+        [SerializeField] private InventoryPopup m_Popup;
 
+        private int m_CurrentItemID;
         private Inventory m_Inventory;
         private Dictionary<int, LootUI> m_LootUIElements;
 
@@ -20,10 +23,27 @@ namespace Loot
         {
             m_Inventory = inventory;
             inventory.onInventoryChanges += OnInventoryChanges;
-
             input.OnInventoryAction += ToggleInventory;
 
+            Init();
             Draw();
+        }
+
+        private void Init()
+        {
+            m_Popup.onSelected += OnPopupSelected;
+        }
+
+        private void OnPopupSelected(InteractType type)
+        {
+            switch (type) {
+                case InteractType.Drop:
+                    m_Inventory.TakeLootByID(m_CurrentItemID, 1);
+                    break;
+                case InteractType.Use:
+                    //Use logic
+                    break;
+            }
         }
 
         private void ToggleInventory()
@@ -55,8 +75,23 @@ namespace Loot
 
             LootUI ui = Instantiate(m_ItemUIPrefab, m_ItemContainer).GetComponent<LootUI>();
             ui.SetData(loot);
+            ui.onClick += OnItemClicked;
 
             m_LootUIElements.Add(loot.ID, ui);
+        }
+
+        private void OnItemClicked(int id, UnityEngine.EventSystems.PointerEventData eventData)
+        {
+            switch (eventData.button) {
+                case UnityEngine.EventSystems.PointerEventData.InputButton.Right:
+                    m_CurrentItemID = id;
+                    m_Popup.SetData(m_Inventory.GetLootInfo(id).Interactions);
+                    m_Popup.Show(eventData.position);
+                    break;
+                default:
+                    m_Popup.Hide(); 
+                    break;
+            }
         }
 
         private void RedrawItem(LootInfo loot)
@@ -96,8 +131,6 @@ namespace Loot
 
             m_LootUIElements = new Dictionary<int, LootUI>();
         }
-
-
     }
 }
 
