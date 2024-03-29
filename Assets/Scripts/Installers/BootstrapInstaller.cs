@@ -1,5 +1,6 @@
 using Input;
 using Loot;
+using System.ComponentModel;
 using UnityEngine;
 using Zenject;
 
