@@ -1,3 +1,4 @@
+using Behaviours;
 using CharacterStats;
 using Installers;
 using UnityEngine;
@@ -38,12 +39,22 @@ namespace Spawners
                 SpawnEnemyAtRandomPoint();
         }
 
-        private void SpawnEnemyAtRandomPoint()
+        private BaseCharacter SpawnEnemy(Vector3 point)
+        {
+            Health health = m_Installer.Instantiate<Health>(m_Enemy, point, Quaternion.identity, null);
+            health.onDeath += OnEnemyIsDead;
+            BaseCharacter character = health.GetComponent<BaseCharacter>();
+
+            m_CurrentCount++;
+
+            return character;
+        }
+
+        private BaseCharacter SpawnEnemyAtRandomPoint()
         {
             Vector2 point = GetRandomPosition();
 
-            m_Installer.Instantiate<Health>(m_Enemy, point, Quaternion.identity, null).onDeath += OnEnemyIsDead;
-            m_CurrentCount++;
+            return SpawnEnemy(point);
         }
 
         private Vector2 GetRandomPosition()

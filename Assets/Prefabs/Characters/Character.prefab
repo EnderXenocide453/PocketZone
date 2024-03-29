@@ -240,7 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackDelay: 1
   m_DamageSourcePrefab: {fileID: 1301728751599097230, guid: 0147c579f9eae8248bb78749e3523655, type: 3}
-  m_InteractionTags: []
+  m_InteractionTags:
+  - Obstacle
+  m_enableConsumption: 0
 --- !u!1 &6877677232711591717
 GameObject:
   m_ObjectHideFlags: 0

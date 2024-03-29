@@ -54,11 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 6089745570065355539, guid: 91ac8af4353abfc49a26852cab0f1ce5, type: 3}
     - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.data[0]
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.data[1]
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4348608807715764277, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.size

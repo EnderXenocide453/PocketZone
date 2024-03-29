@@ -62,11 +62,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.data[0]
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_InteractionTags.Array.data[1]
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 1957279575528056094, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_Speed

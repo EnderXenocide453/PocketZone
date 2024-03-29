@@ -34,10 +34,12 @@ namespace Behaviours
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!CheckTag(collision.tag) || !collision.TryGetComponent<Health>(out var health))
+            if (!CheckTag(collision.tag))
                 return;
 
-            DealDamage(health);
+            if (collision.TryGetComponent<Health>(out var health))
+                DealDamage(health);
+
             if (m_DestroyAfterCollision)
                 Destroy(gameObject);
         }
