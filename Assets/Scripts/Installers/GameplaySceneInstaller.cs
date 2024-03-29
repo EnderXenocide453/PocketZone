@@ -1,4 +1,5 @@
 using Behaviours;
+using Loot;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,7 @@ namespace Installers
     public class GameplaySceneInstaller : MonoInstaller
     {
         [SerializeField] SaveManager m_SaveManager;
+        private LootFabric m_LootFabric;
 
         public override void InstallBindings()
         {

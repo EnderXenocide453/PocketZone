@@ -1,0 +1,24 @@
+{
+  "LootInfo": [
+    {
+      "Item1": 2,
+      "Item2": 1
+    },
+    {
+      "Item1": 4,
+      "Item2": 1
+    },
+    {
+      "Item1": 0,
+      "Item2": 1
+    }
+  ],
+  "PlayerInfo": {
+    "position": {
+      "Item1": 8.495002,
+      "Item2": -1.60687089,
+      "Item3": 0.0
+    },
+    "health": 30.0
+  }
+}

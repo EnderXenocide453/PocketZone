@@ -14,14 +14,10 @@ namespace Behaviours
 
         public CharacterSaveInfo CharacterSaveInfo
         {
-            get => new CharacterSaveInfo
-            {
-                position = transform.position,
-                health = m_Health.CurrentHealth
-            };
+            get => new CharacterSaveInfo(transform.position, m_Health.CurrentHealth);
             set
             {
-                transform.position = value.position;
+                transform.position = value.GetPosition();
                 m_Health.CurrentHealth = value.health;
             }
         }
@@ -55,8 +51,16 @@ namespace Behaviours
 
     public struct CharacterSaveInfo
     {
-        public float3 position;
+        public (float x, float y, float z) position;
         public float health;
+
+        public CharacterSaveInfo(Vector3 position, float health)
+        {
+            this.position = (position.x, position.y, position.z);
+            this.health = health;
+        }
+
+        public Vector3 GetPosition() => new Vector3(position.x, position.y, position.z);
     }
 }
 
