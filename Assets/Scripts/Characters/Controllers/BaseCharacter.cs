@@ -1,7 +1,9 @@
 using CharacterStats;
 using Movement;
+using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Behaviours
 {
@@ -21,6 +23,8 @@ namespace Behaviours
                 m_Health.CurrentHealth = value.health;
             }
         }
+
+        public UnityEvent onDeath;
 
         private void Awake()
         {
@@ -45,6 +49,7 @@ namespace Behaviours
             //foreach (var collider in GetComponents<Collider>())
             //    collider.enabled = false;
 
+            onDeath?.Invoke();
             Destroy(gameObject);
         }
     }

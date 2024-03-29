@@ -19,6 +19,9 @@ public class SaveManager : MonoBehaviour
     {
         m_Inventory = inventory;
         m_LootFabric = lootFabric;
+
+        m_Player.onDeath.AddListener(Erase);
+        Load();
     }
 
     [ContextMenu("save")]
@@ -35,13 +38,9 @@ public class SaveManager : MonoBehaviour
             File.Create(Path);
         }
 
-        File.WriteAllText(
-            Path, 
-            JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                }
-            ));
+        string serialized = JsonConvert.SerializeObject(data, Formatting.Indented);
+
+        File.WriteAllText(Path, serialized);
     }
 
     [ContextMenu("load")]
@@ -54,6 +53,21 @@ public class SaveManager : MonoBehaviour
         m_Player.CharacterSaveInfo = data.PlayerInfo;
 
         m_Inventory.SetData(data.GetLootInfo(m_LootFabric));
+    }
+
+    public void Erase()
+    {
+        File.Delete(Path);
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        Save();
     }
 
     private struct SaveInfo

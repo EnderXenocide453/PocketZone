@@ -1,24 +1,20 @@
 {
   "LootInfo": [
     {
-      "Item1": 2,
-      "Item2": 1
+      "Item1": 5,
+      "Item2": 3
     },
     {
-      "Item1": 4,
-      "Item2": 1
-    },
-    {
-      "Item1": 0,
-      "Item2": 1
+      "Item1": 6,
+      "Item2": 2
     }
   ],
   "PlayerInfo": {
     "position": {
-      "Item1": 8.495002,
-      "Item2": -1.60687089,
+      "Item1": -5.75307035,
+      "Item2": 3.54030776,
       "Item3": 0.0
     },
-    "health": 30.0
+    "health": 10.0
   }
 }

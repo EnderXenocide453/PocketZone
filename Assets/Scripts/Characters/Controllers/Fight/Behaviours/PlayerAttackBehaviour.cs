@@ -27,6 +27,12 @@ namespace Behaviours
             CharacterAttack.SetAttackPossibility(true);
             CharacterAttack.TryAttack();
         }
+
+        private void OnDestroy()
+        {
+            m_InputPresenter.OnAttackBegun -= OnAttackBegun;
+            m_InputPresenter.OnAttackEnds -= OnAttackEnds;
+        }
     }
 }
 

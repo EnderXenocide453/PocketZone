@@ -10,18 +10,21 @@ namespace Loot
 {
     public class InventoryVisualizer : MonoBehaviour
     {
+        [SerializeField] private RectTransform m_InventoryPanel;
         [SerializeField] private RectTransform m_ItemContainer;
         [SerializeField] private GameObject m_ItemUIPrefab;
         [SerializeField] private InventoryPopup m_Popup;
 
         private int m_CurrentItemID;
         private Inventory m_Inventory;
+        private InputPresenter m_Input;
         private Dictionary<int, LootUI> m_LootUIElements;
 
         [Inject]
         public void Construct(Inventory inventory, InputPresenter input)
         {
             m_Inventory = inventory;
+            m_Input = input;
             inventory.onLoaded += Draw;
             inventory.onInventoryChanges += OnInventoryChanges;
             input.OnInventoryAction += ToggleInventory;
@@ -49,7 +52,7 @@ namespace Loot
 
         private void ToggleInventory()
         {
-            gameObject.SetActive(!gameObject.activeSelf);
+            m_InventoryPanel.gameObject.SetActive(!m_InventoryPanel.gameObject.activeSelf);
         }
 
         private void OnInventoryChanges(LootInfo loot, InventoryActionType type)
@@ -129,6 +132,13 @@ namespace Loot
                 }
 
             m_LootUIElements = new Dictionary<int, LootUI>();
+        }
+
+        private void OnDestroy()
+        {
+            m_Input.OnInventoryAction -= ToggleInventory;
+            m_Inventory.onInventoryChanges -= OnInventoryChanges;
+            m_Inventory.onLoaded -= Draw;
         }
     }
 }
