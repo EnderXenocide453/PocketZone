@@ -53,6 +53,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_AttackDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
+      propertyPath: m_enableConsumption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712732298096081376, guid: 7bf080be0cd09e743b97af07aa07b91c, type: 3}
       propertyPath: m_InteractionTags.Array.size
       value: 1
       objectReference: {fileID: 0}

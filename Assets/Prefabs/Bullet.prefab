@@ -164,5 +164,6 @@ MonoBehaviour:
   m_Damage: 10
   m_InteractionTags: []
   m_DestroyAfterCollision: 1
-  m_DestroyOnNextFrame: 0
+  m_ConsumableItem: {fileID: 11400000, guid: 4027debd040386343be17d7c2c3847fa, type: 2}
+  m_MaxLifetime: 10
   m_Speed: 5

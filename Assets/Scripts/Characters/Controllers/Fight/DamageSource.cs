@@ -1,4 +1,5 @@
 using CharacterStats;
+using Loot;
 using System.Collections;
 using UnityEngine;
 
@@ -6,9 +7,13 @@ namespace Behaviours
 {
     public abstract class DamageSource : MonoBehaviour
     {
-        [SerializeField] float m_Damage = 10f;
+        [SerializeField] private float m_Damage = 10f;
         [SerializeField] private string[] m_InteractionTags;
-        [SerializeField] bool m_DestroyAfterCollision = true;
+        [SerializeField] private bool m_DestroyAfterCollision = true;
+        [SerializeField] private Item m_ConsumableItem;
+        [SerializeField] private int m_ConsumptionCost = 1;
+
+        public (int id, int cost) ConsumptionParameters => m_ConsumableItem ? (m_ConsumableItem.Index, m_ConsumptionCost) : (0, 0);
 
         public void Execute()
         {

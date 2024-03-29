@@ -13,9 +13,12 @@ namespace Loot
 
         public Action<LootInfo, InventoryActionType> onInventoryChanges;
 
-        public Inventory()
+        public Inventory(params LootInfo[] loot)
         {
             m_StoredItems = new Dictionary<int, LootInfo>();
+            foreach (var item in loot) {
+                AddLoot(item);
+            }
         }
 
         public LootInfo GetLootInfo(int id)
@@ -38,24 +41,28 @@ namespace Loot
             onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Changed);
         }
 
-        public int TakeLoot(LootInfo loot)
+        public bool TakeLootByID(int id, int count)
         {
-            if (!m_StoredItems.ContainsKey(loot.ID))
-                return 0;
+            if (!m_StoredItems.ContainsKey(id))
+                return false;
 
-            LootInfo storedLoot = m_StoredItems[loot.ID];
-            int count = Mathf.Min(loot.Count, storedLoot.Count);
-            storedLoot.SetCount(storedLoot.Count - count);
+            LootInfo storedLoot = m_StoredItems[id];
 
             if (storedLoot.Count == 0) {
                 m_StoredItems.Remove(storedLoot.ID);
                 onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Removed);
-                return count;
+                return false;
+            } 
+            if (storedLoot.Count < count) {
+                return false;
             }
 
+            storedLoot.SetCount(storedLoot.Count - count);
             onInventoryChanges?.Invoke(storedLoot, InventoryActionType.Changed);
-            return count;
+            return true;
         }
+
+
     }
 
     public enum InventoryActionType

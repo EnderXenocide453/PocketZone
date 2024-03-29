@@ -15,7 +15,7 @@ namespace Installers
             Container.Bind<InputPresenter>().FromInstance(m_InputPresenter).AsSingle().NonLazy();
             Container.Bind<LootFabric>().FromInstance(m_LootFabric).AsSingle().NonLazy();
             m_LootFabric.GenerateIDs();
-            Container.Bind<Inventory>().FromInstance(new Inventory()).AsSingle().NonLazy();
+            Container.Bind<Inventory>().FromInstance(new Inventory(m_LootFabric.GetItem(0, 20))).AsSingle().NonLazy();
         }
     }
 }
