@@ -1,7 +1,5 @@
 using CharacterStats;
 using Movement;
-using System;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
